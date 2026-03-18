@@ -89,6 +89,20 @@
       height: 20px;
     }
 
+    .submit-btn:disabled {
+      background: #a5b4fc;
+      cursor: not-allowed;
+    }
+
+    .success {
+      display: none;
+      text-align: center;
+      color: #6366f1;
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 16px;
+    }
+
     .legal {
       text-align: center;
       font-size: 12px;
@@ -106,20 +120,51 @@
   <div class="card">
     <div class="field">
       <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="Jane Cooper" autocomplete="name">
+      <input type="text" id="name" name="name" placeholder="Jane Cooper" autocomplete="name" required>
     </div>
     <div class="field">
       <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="jane@university.edu" autocomplete="email">
+      <input type="email" id="email" name="email" placeholder="jane@university.edu" autocomplete="email" required>
     </div>
-    <button class="submit-btn" type="submit">
+    <button class="submit-btn" id="btn" type="button" onclick="submitForm()">
       Send Me The Exam Paper
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="22" y1="2" x2="11" y2="13"></line>
         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
       </svg>
     </button>
+    <p class="success" id="success">Check your inbox — the exam paper is on its way!</p>
     <p class="legal">By clicking, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
   </div>
+
+  <script>
+    async function submitForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const btn = document.getElementById("btn");
+
+      if (!name || !email) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+
+      try {
+        await fetch("https://hook.us1.make.com/9180su4cph8nxj2j6m4l78cvthl26kg7", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email })
+        });
+        btn.style.display = "none";
+        document.getElementById("success").style.display = "block";
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = "Send Me The Exam Paper";
+        alert("Something went wrong. Please try again.");
+      }
+    }
+  </script>
 </body>
 </html>
