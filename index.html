@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Paper Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f0f2f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 36px 32px 28px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1.5px solid #e2e5ef;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #333;
+      background: #f8f9fc;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input::placeholder {
+      color: #aab0c0;
+    }
+
+    input:focus {
+      border-color: #6366f1;
+      background: #fff;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover {
+      background: #4f46e5;
+    }
+
+    .submit-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .legal {
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 14px;
+    }
+
+    .legal a {
+      color: #9ca3af;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="field">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Jane Cooper" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="jane@university.edu" autocomplete="email">
+    </div>
+    <button class="submit-btn" type="submit">
+      Send Me The Exam Paper
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+    <p class="legal">By clicking, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+  </div>
+</body>
+</html>
