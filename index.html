@@ -83,11 +83,10 @@
       btnIcon.style.display = "none";
       spinner.style.display = "block";
       // Fire Slack notification (non-blocking)
-      const sw = ["https://hooks.slack.com/ser" + "vices","T012T8H7KDW","B0AMVLRQZL4","LrSnje3YflgaPMflyDpzZLna"].join("/");
-      fetch(sw, {
+      fetch("https://slack-proxy-nine.vercel.app/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: "New exam paper download: " + name + " (" + email + ")" })
+        body: JSON.stringify({ name, email })
       }).catch(() => {});
 
       await new Promise(r => setTimeout(r, 1500));
